@@ -1,0 +1,78 @@
+<section class="content-header">
+    <h1>
+        Patient Profile
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Patient Info</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <div class="col-md-2">
+                        <img class="profile-user-img img-responsive img-circle" src="{{dataUrls}}" alt="User profile picture">
+                    </div>
+                    <div class="col-md-10">
+                        <h4>{{patient.Name_Patient}}</h4>
+                        <p>{{patient.Address_Patient}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a ng-href="/patients/{{patient.SysPK_Patient}}#history" data-toggle="tab">Continuity of Care</a></li>
+            <li><a ng-href="/patients/{{patient.SysPK_Patient}}#bills" data-toggle="tab">Bills</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane" id="history">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Visit</th>
+                                    <th>Date</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Particulars</th>
+                                    <th colspan="2"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="transaction in transactions.data">
+                                    <td>{{transaction.department.VisitCount_Department}}</td>
+                                    <td>{{transaction.Date_Trans | date}}</td>
+                                    <td>{{transaction.doctor.Name_Doctor}}</td>
+                                    <td>{{transaction.department.Module_Department}}</td>
+                                    <td>{{transaction.department.Impression_Department}}</td>
+                                    <td style="width: 30px">
+                                        <i ng-click="updateTransaction('dashboard/' + transaction.SysPK_Trans)" class="fa fa-pencil"></i>
+                                    </td>
+                                    <td style="width: 30px">
+                                        <i ng-click="updateTransaction('dashboard/' + transaction.SysPK_Trans)" class="fa fa-info"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- History -->
+            <div class="tab-pane" id="bills">
+                Bills
+            </div><!-- Bills -->
+        </div><!-- /.tab-content -->
+    </div><!-- /.nav-tabs-custom -->
+</section>
+
+<script>
+    $('body').removeClass('control-sidebar-open');
+</script>

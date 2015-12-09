@@ -1,0 +1,47 @@
+<script type="text/ng-template" id="patientModal.html">
+    <div class="container-fluid">
+        <div class="row"><br>
+            <div class="form-group col-sm-4">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>Patients List</h4></div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="myTable">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Patient Name</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Contact No.</th>
+                        <th>Occupation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="no-padding"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.Name_Patient" placeholder="Search Name"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.Gender_Patient" placeholder="Search Gender"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.Address_Patient" placeholder="Search Address"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.ContactNumber_Patient" placeholder="Search Contact Number"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.Occupation_Patient" placeholder="Search Occupation"></td>
+                    </tr>
+                    <tr ng-repeat="patient in filtered = patients.data | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-click="setID(patient)" ng-dblclick="ok(patient)" class={{selected}}>
+                        <td ng-click="ok(patient)"><i class="fa fa-circle-o"></i></td>
+                        <td>{{patient.Name_Patient}}</td>
+                        <td>{{patient.Gender_Patient}}</td>
+                        <td>{{patient.Address_Patient}}</td>
+                        <td>{{patient.ContactNumber_Patient}}</td>
+                        <td>{{patient.Occupation_Patient}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"><i>(Note: Click </i> <i class="fa fa-circle-o"></i><i> or double click the row to select patient..)</i></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <pagination ng-model="currentPage" max-size="10" boundary-links="true" first-text="<<" last-text=">>" total-items="totalItems" items-per-page="entryLimit" class="pagination-sm"></pagination>
+    </div>
+</script>

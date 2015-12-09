@@ -1,0 +1,16 @@
+{
+  "dev":
+        {
+          "driver": "mysql",
+          "user": "root",
+          "database": "devdb",
+          "password": "admin"
+        },
+
+  "production":
+              {
+                "driver": "mysql",
+                "user": "root",
+                "database": "hopsdb"
+              }
+}

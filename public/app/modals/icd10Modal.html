@@ -1,0 +1,36 @@
+<script type="text/ng-template" id="icd10Modal.html">
+    <div class="container-fluid">
+        <div class="row"><br>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>ICD10 List</h4></div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="myTable">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>ICD10 Code</th>
+                        <th>ICD Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="no-padding"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.ICDCode_ICD" placeholder="Search Item"></td>
+                        <td class="no-padding"> <input type="text" class="form-control input-sm" ng-model="search.Description_ICD" placeholder="Search Description"></td>
+                    </tr>
+                    <tr ng-repeat="icd in filtered = icds.data | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-click="setID(icd)" ng-dblclick="ok(icd)" class={{selected}}>
+                        <td ng-click="ok(icd)"><i class="fa fa-circle-o"></i></td>
+                        <td>{{icd.ICDCode_ICD}}</td>
+                        <td>{{icd.Description_ICD}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><i>(Note: Click </i> <i class="fa fa-circle-o"></i><i> or double click the row to select ICD10..)</i></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <pagination ng-model="currentPage" max-size="10" boundary-links="true" first-text="<<" last-text=">>" total-items="totalItems" items-per-page="entryLimit" class="pagination-sm"></pagination>
+    </div>
+</script>

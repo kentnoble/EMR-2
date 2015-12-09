@@ -1,0 +1,65 @@
+<section  ng-if="isAuthenticated()" class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="../../assets/img/avatar_2xx.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>{{user.name}}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+            <a href="#/newsfeed">
+                <i class=""></i> <span>Newsfeed</span>
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="">
+                <i class="fa fa-users"></i> <span>Setups</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#/user-setup"><i class="fa fa-user-plus"></i> User Setup</a></li>
+                <li><a href="#/patient-setup"><i class="fa fa-user-plus"></i> Patient Setup</a></li>
+                <li><a href="#/doctor-setup"><i class="fa fa-user-plus"></i> Doctor Setup</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#/encounters">
+                <i class="fa fa-eyedropper"></i> <span>Encounter</span>
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="#/dashboard">
+                <i class="fa fa-eyedropper"></i> <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li class="treeview">
+            <a href="">
+                <i class="fa fa-money"></i> <span>Accounting</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#/#"><i class="fa fa-circle-o"></i> Billing</a></li>
+                <li><a href="#/#"><i class="fa fa-bar-chart"></i> Reports</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="">
+                <i class="fa fa-file-text-o"></i> <span>Master Lists</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#/patients"><i class="fa fa-users"></i> Patients</a></li>
+                <li><a href="#/doctors"><i class="fa fa-users"></i> Doctors</a></li>
+                <li><a href="#/coas"><i class="fa fa-users"></i> Chart of Accounts</a></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section ng-if="!isAuthenticated()" class="sidebar">
+</section>

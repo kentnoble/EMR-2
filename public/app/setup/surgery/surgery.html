@@ -1,0 +1,492 @@
+<div ng-include="'app/modals/medicineSetupModal.html'"></div>
+<div ng-include="'app/modals/itemModal.html'"></div>
+<div ng-include="'app/modals/icd10Modal.html'"></div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Surgery Department</h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="">Department</a></li>
+        <li class="active">Surgery Department</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <form class="form-horizontal" role="form">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h4>Patient Information</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <img class="profile-user-img img-responsive img-circle" src="{{dataUrls}}" alt="User profile picture">
+                                </div>
+                                <div class="col-md-10">
+                                    <h4>{{patient.Name_Patient}}</h4>
+                                    <p>{{patient.Address_Patient}}</p>
+                                    <p>{{patient.Occupation_Patient}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Patient Informations -->
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h4>Other Details</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="datemask" class="col-lg-2 control-label">Date:</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" ng-model="transaction.Date_Trans" class="form-control input-sm" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask id="datemask">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="doctor" class="col-lg-2 control-label">Doctor:</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" ng-model="doctor.Name_Doctor" class="form-control input-sm" id="doctor">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Other Details -->
+        </form>
+    </div>
+    <form class="form-horizontal" role="form">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="/transactions/surgery#notes" data-toggle="tab">Clinical Notes</a></li>
+                <li class=""><a href="/transactions/surgery#medical" data-toggle="tab">Other Medical Info</a></li>
+                <li class=""><a href="/transactions/surgery#requests" data-toggle="tab">Request</a></li>
+                <li class=""><a href="/transactions/surgery#prescription" data-toggle="tab">E-Prescription</a></li>
+                <!--<li class=""><a href="/transactions/department#products" data-toggle="tab">Product & Services Used</a></li>
+                <li class=""><a href="/transactions/department#entries" data-toggle="tab">Entries</a></li> -->
+            </ul>
+                <div class="tab-content">
+                    <!--- Clinical Notes --->
+                    <div class="active tab-pane" id="notes">
+                        <div class="row">
+                            <div class="col-lg-12"><h4>Reasons for Encounter / Chief Complaints</h4></div>
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea ng-model="department.ReasonForEncounter_Department" rows="2" class="form-control" placeholder="Reasons for Encounter.."></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="col-md-2 control-label">Masses:</label>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-default btn-sm" ng-model="selectedMasses" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="mass.value as mass.label for mass in select1" bs-select>
+                                            Action <span class="caret"></span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="surgery.MassesDescription_Surgery" class="form-control input-sm" placeholder="Massess Descriptions..">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="col-md-2 control-label">Lessions / Moles:</label>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-default btn-sm" ng-model="selectedMoles" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="moles.value as moles.label for moles in select1" bs-select>
+                                            Action <span class="caret"></span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="surgery.MolesDescription_Surgery" class="form-control input-sm" placeholder="Lessions and Moles Descriptions..">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="col-md-2 control-label">Pain / Tenderness:</label>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-default btn-sm" ng-model="selectedPain" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="pain.value as pain.label for pain in select1" bs-select>
+                                            Action <span class="caret"></span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="surgery.PainDescription_Surgery" class="form-control input-sm" placeholder="Pain and Tenderness Descriptions..">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="col-md-2 control-label">Discharge:</label>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-default btn-sm" ng-model="selectedDischarge" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="discharge.value as discharge.label for discharge in select2" bs-select>
+                                            Action <span class="caret"></span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="surgery.DischargeDescription_Surgery" class="form-control input-sm" placeholder="Discharge Descriptions..">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- Reasons For Encounter -->
+
+                        <div class="row">
+                            <div class="col-lg-12"><h4>Impressions</h4></div>
+                            <div class="col-lg-12">
+                                <textarea rows="3" ng-model="surgery.Impression_Surgery" class="form-control" placeholder="Impressions . . ."></textarea>
+                            </div>
+                        </div>  <!-- Impression -->
+
+                        <div class="row">
+                            <div class="col-lg-12"><h4>Plan of Care</h4></div>
+                            <div class="col-lg-12"><h5>1. Laboratory and Diagnostics</h5></div>
+                            <div class="col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr ng-repeat="requestdiag in requestsDiagnostics">
+                                        <td>{{requestdiag.Particular_Request}}</td>
+                                    </tr>
+                                </table>
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td><input ng-change="diagChanged()" type="text" class="form-control input-sm" ng-model="tempDiag.Particular_Request" placeholder="Add Laboratory and Diagnostics"></td>
+                                    </tr>
+                                    <tr>
+                                        <td ng-if="isChangedDiag"><input type="submit" class="btn btn-primary btn-sm" ng-click="addDiagnostics(tempDiag)" value="Add Laboratory and Diagnostics">
+                                            <i>(Click this to add data in the list of Laboratory and Diagnostics)</i></td>
+                                    </tr>
+                                </table>
+                            </div> <!-- End Diagnostics -->
+                            <div class="col-lg-12"><h5>2. Planned Procedures</h5></div>
+                            <div class="col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr ng-repeat="requestprocedure in requestsProcedures">
+                                        <td>{{requestprocedure.Particular_Request}}</td>
+                                    </tr>
+                                </table>
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td><input ng-change="procedChanged()" type="text" class="form-control input-sm" ng-model="tempProced.Particular_Request" placeholder="Add Procedures"></td>
+                                    </tr>
+                                    <tr>
+                                        <td ng-if="isChangedProced"><input type="submit" class="btn btn-primary btn-sm" ng-click="addProcedures(tempProced)" value="Add Procedures">
+                                            <i>(Click this to add data in the list of Planned Procedures)</i></td>
+                                    </tr>
+                                </table>
+                            </div> <!-- End Procedures -->
+                            <div class="col-lg-12"><h5>3. Medications</h5></div>
+                            <div class="col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <th style="width: 15px">#</th>
+                                        <th>Medicine</th>
+                                        <th>Strength</th>
+                                        <th>Form</th>
+                                        <th># of Med</th>
+                                        <th>Dosage</th>
+                                        <th>Instruction</th>
+                                    </tr>
+                                    <tr ng-repeat="medicine in medicines">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{medicine.Medicine_Prescription}}</td>
+                                        <td>{{medicine.Strength_Prescription}}</td>
+                                        <td>{{medicine.Form_Prescription}}</td>
+                                        <td>{{medicine.NoOfMedicine_Prescription}}</td>
+                                        <td>{{medicine.Dosage_Prescription}}</td>
+                                        <td>{{medicine.Instruction_Prescription}}</td>
+                                    </tr>
+                                </table>
+                                <table class="table table-condensed">
+                                    <tr class="form-group">
+                                        <form role="form">
+                                            <td><input ng-change="medChanged()" type="text" class="form-control input-sm" ng-model="tempMed.Medicine_Prescription" placeholder="Medicine"></td>
+                                            <td><input type="text" class="form-control input-sm" ng-model="tempMed.Strength_Prescription" placeholder="Strength"></td>
+                                            <td><input type="text" class="form-control input-sm" ng-model="tempMed.Form_Prescription" placeholder="Form"></td>
+                                            <td><input type="text" class="form-control input-sm" ng-model="tempMed.NoOfMedicine_Prescription" placeholder="# of Medicine"></td>
+                                            <td><input type="text" class="form-control input-sm" ng-model="tempMed.Dosage_Prescription" placeholder="Dosage"></td>
+                                            <td><input type="text" class="form-control input-sm" ng-model="tempMed.Instruction_Prescription" placeholder="Instruction"></td>
+                                        </form>
+                                    </tr>
+                                    <tr ng-if="isChangedMed">
+                                        <td></td>
+                                        <td colspan="6"><input type="submit" class="btn btn-primary btn-sm" ng-click="addmedicine(tempMed)" value="Add Medicine">
+                                            <i>(Click this to add medicine in the list of Medications)</i></td>
+                                    </tr>
+                                </table>
+                            </div> <!-- End Medications -->
+                            <div class="col-lg-12"><h5>4. Other Plans</h5></div>
+                            <div class="col-lg-12">
+                                <textarea rows="3" ng-model="surgery.OtherPlan_Surgery" class="form-control" placeholder="Other Plans . . ."></textarea>
+                            </div>
+                        </div>  <!-- Plan of Care -->
+
+                        <div class="row">
+                            <div class="col-lg-12"><h4>Diagnoses</h4></div>
+                            <div class="col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <th style="width: 150px" >ICD10 Code</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr ng-repeat="diagnose in diagnoses">
+                                        <td>{{diagnose.SysFK_ICD10_Diagnoses}}</td>
+                                        <td>{{diagnose.Diagnoses_Diagnoses}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><button class="btn btn-primary btn-sm" ng-click="openICD('md')">Add Diagnoses</button></td>
+                                        <td colspan="6"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>  <!-- Diagnoses -->
+                    </div>
+                    <!--- END of Clinical Notes --->
+
+                    <!--- Other Medical Info --->
+                    <div class="tab-pane" id="medical">
+                        <div class="row">
+                            <div class="col-lg-12"><h4>History of Present Illness</h4></div>
+                            <div class="col-lg-12"><h5>Duration</h5></div>
+                            <div class="col-lg-2 form-group">
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-default btn-sm" ng-model="selectedDuration" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="durations.value as durations.label for durations in selectDuration" bs-select>
+                                        Action <span class="caret"></span>
+                                    </button>
+                                </div>
+                            </div> <!-- Duration -->
+                            <div class="col-lg-2"><input type="text" ng-model="surgery.MonthsHPI_Surgery" class="form-control input-sm" placeholder="# of Months"></div>
+                            <div class="col-lg-2"><input type="text" ng-model="surgery.YearsHPI_Surgery" class="form-control input-sm" placeholder="# of Years"></div>
+                            <div class="col-lg-12"><h5>Severity</h5></div>
+                            <div class="col-lg-2 form-group">
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-default btn-sm" ng-model="selectedSeverity" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="severities.value as severities.label for severities in selectSeverity" bs-select>
+                                        Action <span class="caret"></span>
+                                    </button>
+                                </div>
+                            </div> <!-- Duration -->
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.HPI_Surgery" class="form-control" placeholder="History of Present illness.."></textarea></div>
+                            <div class="col-lg-12"><h4>Physical Examination</h4></div>
+                            <div class="col-lg-12"><h5>Skin</h5></div>
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.Skin_Surgery" class="form-control" placeholder="Skin Descriptions . . ."></textarea></div>
+                            <div class="col-lg-12"><h5>HEENT (Head, Eyes, Ears, Nose and Throat)</h5></div>
+                            <div class="col-lg-12 form-group">
+                                <div class="col-lg-12">
+                                    <button type="button" class="btn btn-default btn-sm" ng-model="selectedHEENT" data-html="1" data-multiple="1" data-animation="am-flip-x" bs-options="heents.value as heents.label for heents in select3" bs-select>
+                                        Action <span class="caret"></span>
+                                    </button>
+                                </div>
+                            </div> <!-- HEENT -->
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.HEENTDescription_Surgery" class="form-control" placeholder="HEENT (Head, Eyes, Ears, Nose and Throat)"></textarea></div>
+                            <div class="col-lg-12"><h5>Chest and Lungs</h5></div>
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.CL_Surgery" class="form-control" placeholder="Chest and Lungs Descriptions . . ."></textarea></div>
+                            <div class="col-lg-12"><h5>Genitalia</h5></div>
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.Genitalia_Surgery" class="form-control" placeholder="Genitalia Descriptions . . ."></textarea></div>
+                            <div class="col-lg-12"><h5>Extremities</h5></div>
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.Extremities_Surgery" class="form-control" placeholder="Extremities Descriptions . . ."></textarea></div>
+                            <div class="col-lg-12"><h5>Rectal</h5></div>
+                            <div class="col-lg-12"><textarea rows="2" ng-model="surgery.Rectal_Surgery" class="form-control" placeholder="Rectal Descriptions . . ."></textarea></div>
+                        </div>
+                    </div>
+                    <!--- END of Other Medical Info --->
+
+                    <!--- Requests --->
+                    <div class="tab-pane" id="requests">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>Request</th>
+                                <th>Request for</th>
+                            </tr>
+                            <tr ng-repeat="requestdiag in requestsDiagnostics">
+                                <td>{{requestdiag.Particular_Request}}</td>
+                                <td>Laboratory and Diagnostics</td>
+                            </tr>
+                            <tr ng-repeat="requestProced in requestsProcedures">
+                            <td>{{requestProced.Particular_Request}}</td>
+                            <td>Procedures</td>
+                        </tr>
+                        </table>
+                        <table class="table table-condensed">
+                            <tr>
+                                <td><input ng-change="diagChanged()" type="text" class="form-control input-sm" ng-model="tempDiag.Particular_Request" placeholder="Add Laboratory and Diagnostics"></td>
+                            </tr>
+                            <tr>
+                                <td ng-if="isChangedDiag"><input type="submit" class="btn btn-primary btn-sm" ng-click="addDiagnostics(tempDiag)" value="Add Laboratory and Diagnostics">
+                                    <i>(Click this to add data in the list of Laboratory and Diagnostics)</i></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- END of Requests-->
+
+                    <!--- PRESCRIPTION --->
+                    <div class="tab-pane" id="prescription">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th style="width: 15px">#</th>
+                                <th>Medicine</th>
+                                <th>Strength</th>
+                                <th>Form</th>
+                                <th># of Med</th>
+                                <th>Dosage</th>
+                                <th>Instruction</th>
+                            </tr>
+                            <tr ng-repeat="medicine in medicines">
+                                <td>{{$index+1}}</td>
+                                <td>{{medicine.Medicine_Prescription}}</td>
+                                <td>{{medicine.Strength_Prescription}}</td>
+                                <td>{{medicine.Form_Prescription}}</td>
+                                <td>{{medicine.NoOfMedicine_Prescription}}</td>
+                                <td>{{medicine.Dosage_Prescription}}</td>
+                                <td>{{medicine.Instruction_Prescription}}</td>
+                            </tr>
+                            <!-- modal add of medicine
+                            <tr>
+                                <td></td>
+                                <td><a class="btn btn-primary btn-sm" ng-click="openmedicine('md')">Add Medicine</a></td>
+                                <td colspan="5"></td>
+                            </tr> -->
+                        </table>
+                        <table class="table table-condensed">
+                            <tr class="form-group">
+                                <form role="form">
+                                    <td><input ng-change="medChanged()" type="text" class="form-control input-sm" ng-model="tempMed.Medicine_Prescription" placeholder="Medicine"></td>
+                                    <td><input type="text" class="form-control input-sm" ng-model="tempMed.Strength_Prescription" placeholder="Strength"></td>
+                                    <td><input type="text" class="form-control input-sm" ng-model="tempMed.Form_Prescription" placeholder="Form"></td>
+                                    <td><input type="text" class="form-control input-sm" ng-model="tempMed.NoOfMedicine_Prescription" placeholder="# of Medicine"></td>
+                                    <td><input type="text" class="form-control input-sm" ng-model="tempMed.Dosage_Prescription" placeholder="Dosage"></td>
+                                    <td><input type="text" class="form-control input-sm" ng-model="tempMed.Instruction_Prescription" placeholder="Instruction"></td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input ng-if="isChangedMed" type="submit" class="btn btn-primary btn-sm" ng-click="addmedicine(tempMed)" value="Add Medicine"></td>
+                                <td colspan="5"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- END of PRESCRIPTION-->
+
+                    <!--PRODUCT AND SERVICES USED-->
+                    <div class="tab-pane" id="products">
+                        <table class="table table-condensed">
+                            <form role="form">
+                                <tr>
+                                    <th style="width: 250px" >Item</th>
+                                    <th>Qty</th>
+                                    <th>Unit</th>
+                                    <th>Cost</th>
+                                    <th>Selling Price</th>
+                                    <th>Sub Total</th>
+                                </tr>
+                                <tr ng-repeat="item in items">
+                                    <td class="no-padding"><input class="form-control input-sm" style="width: 250px" ng-model="item.DisplayDescription_LdgrInvty" data-readonly></td>
+                                    <td class="no-padding"><input ng-change="valueChanged($index)" class="form-control input-sm" ng-model="item.DisplayQtyOut_LdgrInvty"></td>
+                                    <td class="no-padding"><input class="form-control input-sm" ng-model="item.DisplayUnitOfMeasure_LdgrInvty"></td>
+                                    <td class="no-padding"><input class="form-control input-sm" ng-model="item.DisplayUnitCOst_LdgrInvty | currency:''"></td>
+                                    <td class="no-padding"><input ng-change="valueChanged($index)" class="form-control input-sm" ng-model="item.DisplayUnitSelling_LdgrInvty | currency:''"></td>
+                                    <td class="no-padding"><input class="form-control input-sm" ng-model="item.DisplaySubTotalIn_LdgrInvty | currency:''"></td>
+                                </tr>
+                                <tr>
+                                    <td><button class="btn btn-primary btn-sm" ng-click="openitem('lg')">Add Item</button></td>
+                                    <td colspan="6"></td>
+                                </tr>
+                            </form>
+                        </table>
+                        <!--<table class="table table-condensed">
+                            <tr class="form-group">
+                                <form role="form">
+                                    <td class="no-padding"><input ng-change="itemChanged()" ng-click="openitem('lg')" type="text" class="form-control input-sm" ng-model="tempItem.Description_Invty" placeholder="Item"></td>
+                                    <td class="no-padding"><input ng-change="valueChanged()" type="text" class="form-control input-sm" ng-model="QTY" placeholder="Qty"></td>
+                                    <td class="no-padding"><input type="text" class="form-control input-sm" ng-model="tempItem.BaseUnitOfMeasure_Invty" placeholder="Unit"></td>
+                                    <td class="no-padding"><input type="text" class="form-control input-sm" ng-model="tempItem.CurrentCost_Invty" placeholder="Cost"></td>
+                                    <td class="no-padding"><input ng-change="valueChanged()" type="text" class="form-control input-sm" ng-model="tempItem.Price_Invty" placeholder="Price"></td>
+                                    <td class="no-padding"><input type="text" class="form-control input-sm" ng-model="SubTotal" placeholder="Sub Total"></td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input ng-if="isChangedItem" type="submit" class="btn btn-primary btn-sm" ng-click="additem(tempItem)" value="Add Item"></td>
+                                <td colspan="5"></td>
+                            </tr>
+                        </table> -->
+                    </div><!-- /.tab-pane -->
+                    <!--END of PRODUCT AND SERVICES USED-->
+
+                    <!--ENTRIES-->
+                    <div class="tab-pane" id="entries">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th style="width: 15px">#</th>
+                                <th style="width: 90px">Account #</th>
+                                <th>Account Title</th>
+                                <th>Debit</th>
+                                <th>Credit</th>
+                                <th>Module</th>
+                                <th>Status</th>
+                                <th>Date Due</th>
+                                <th>Particulars</th>
+                            </tr>
+                            <tr ng-repeat="ledger in ledgers">
+                                <td>{{$index+1}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                                <td>{{ledger}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--END of ENTRIES-->
+                </div> <!-- Tab Contents -->
+            <div class="pull-right" style="padding-top: 3px">
+                <button class="btn btn-primary btn-sm pull-right" ng-click="addTransaction()"><i class="fa fa-floppy-o"></i> Save</button>
+            </div>
+        </div><!-- /.nav-tabs-custom -->
+    </form>
+</section>
+
+                        <!-- Right Sidebar -->
+
+<aside class="control-sidebar control-sidebar-light">
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li><a href="#control-sidebar-home-tab" data-toggle="tab">Queued Patients</a></li>
+    </ul>
+    <div class="tab-content">
+        <!-- Home tab content -->
+        <div>
+            <ul class="control-sidebar-menu">
+                <li ng-repeat="encounter in encounters.data" ng-click="selectPatientToServe(encounter)">
+                    <a href="javascript:;">
+                        <i class="menu-icon fa fa-user bg-red"></i>
+                        <div class="menu-info">
+                            <h4 class="control-sidebar-subheading">{{encounter.patient.Name_Patient}}</h4>
+                            <p>{{encounter.patient.Address_Patient}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<div class="control-sidebar-bg"></div>
+</div>
+
+        <!-- Page Script -->
+<script>
+    $(function () {
+        $('body').addClass('control-sidebar-open');
+        $("#datemask").inputmask("yyyy-mm-dd", {"placeholder": "yyyy-mm-dd"});
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass: 'iradio_minimal-red'
+        });
+    });
+</script>

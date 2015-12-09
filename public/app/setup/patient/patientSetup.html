@@ -1,0 +1,302 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Patient Setup Form</h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="">Setups</a></li>
+        <li class="active">Patient Setup</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h4>Personal Information</h4>
+                </div>
+                <form class="form-horizontal" role="form">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <img ng-src="{{dataUrls}}" width="150" style="border:3px solid black" height="150" alt="Profile Picture" class="img-responsive">
+                                <div style="position:relative;">
+                                    <a class='btn btn-primary btn-sm' href='javascript:;'>Profile Picture<input class="inputfile" type="file"  ng-file-select="onFileSelect($files)" ng-model="patient.Picture_Patient" size="40"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-lg-3 control-label">Name:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text"  ng-model="patient.Name_Patient" class="form-control input-sm" id="inputName" placeholder="Last Name,  First Name   Middle Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="InputAddress" class="col-lg-3 control-label">Address:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" ng-model="patient.Address_Patient" class="form-control input-sm" id="InputAddress" placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label class="col-lg-3 control-label">Birthdate:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" ng-model="patient.Birthdate_Patient" class="form-control input-sm" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask id="datemask">
+                                        <!--<accesssoft-datepicker model="patient.Birthdate_Patient"></accesssoft-datepicker> -->
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="sex" class="col-lg-3 control-label">Sex:</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control input-sm" id="sex" ng-model="patient.Gender_Patient">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="status" class="col-lg-3 control-label">Status:</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control input-sm" id="status" ng-model="patient.Status_Patient">
+                                            <option>Single</option>
+                                            <option>Married</option>
+                                            <option>Annuled</option>
+                                            <option>Separated</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="occupation" class="col-lg-3 control-label">Occupation:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" ng-model="patient.Occupation_Patient" class="form-control input-sm" id="occupation" placeholder="Occupation">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nationality" class="col-lg-3 control-label">Nationality:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" ng-model="patient.Nationality_Patient" class="form-control input-sm" id="nationality" placeholder="Nationality">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="religion" class="col-lg-3 control-label">Religion:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" ng-model="patient.Religion_Patient" class="form-control input-sm" id="religion" placeholder="Religion">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="col-lg-3 control-label">Phone #:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text"  ng-model="patient.ContactNumber_Patient" class="form-control input-sm" id="phone" placeholder="Phone Number">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-lg-3 control-label">ID #:</label>
+                                    <div class="col-lg-9">
+                                        <input type="text"  ng-model="patient.ID_Patient" class="form-control input-sm" id="id" placeholder="ID Number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <!-- Medical Information-->
+                        <h4>Medical Information</h4>
+                        <fieldset>
+                            <div><h5>Medical Problems</h5></div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="hypertension" ng-model="patient.IsHypertension_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="hypertension">Hypertension</label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.YearsHyper_Patient" placeholder="Years">
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.MedHyper_Patient"  placeholder="Medications">
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.HBP_Patient"  placeholder="HBP">
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="text" class="form-control input-sm"  ng-model="patient.UBP_Patient"  placeholder="UBP">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="diabetes" ng-model="patient.IsDiabetes_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="diabetes">Diabetes</label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.YearsDiabetes_Patient" placeholder="Years">
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.MedDiabetes_Patient" placeholder="Medications">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="others" ng-model="patient.IsOtherMedProblem_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="others">Others</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" class="form-control input-sm"  ng-model="patient.OtherMedProblem_Patient" placeholder="Others">
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.MedOtherMedProblem_Patient" placeholder="Medications">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.OtherMedProblem2_Patient" placeholder="Others">
+                                </div>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.MedOtherMedProblem2_Patient" placeholder="Medications">
+                                </div>
+                            </div>
+
+                            <div><h5>Vices</h5></div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="smoking" ng-model="patient.IsSmoking_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="smoking">Smoking</label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.YearsSmoking_Patient" placeholder="Years">
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.ConSmoking_Patient" placeholder="Consumption">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="alcohol" ng-model="patient.IsAlcohol_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="alcohol">Alcohol</label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.YearsAlcohol_Patient" placeholder="Years">
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.ConAlcohol_Patient" placeholder="Consumption">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="allergy" ng-model="patient.IsAllergies_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="allergy">Allergies</label>
+                                </div>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.Allergies_Patient" placeholder="Allergies">
+                                </div>
+                            </div>
+
+                            <div><h5>Heredofamilial Desease</h5></div>
+                            <div class="form-group row">
+                                <div class="col-lg-1">
+                                    <input type="checkbox" id="hpn" ng-model="patient.IsHPN_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="hpn">HPN</label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="checkbox" id="dm" ng-model="patient.IsDM_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="dm">DM</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="asthma" ng-model="patient.IsAsthma_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="asthma">Asthma</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="checkbox" id="otherHD" ng-model="patient.IsOtherHeredoDesease_Patient" ng-true-value="1" ng-false-value="0">
+                                    <label for="otherHD">Others</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control input-sm" ng-model="patient.HeredoDesease_Patient" placeholder="specify other heredofamilial desease">
+                                </div>
+                            </div>
+                            <div><h5>History of Past Illnes</h5></div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <textarea class="form-control" ng-model="patient.HistPastIllness_Patient"></textarea>
+                                </div>
+                            </div>
+
+                            <div><h5>Hospitalizations</h5></div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <table class="table table-condensed">
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Hospital</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                        <tr ng-repeat="hospital in hospitals">
+                                            <td>{{hospital.Year_Hospitalization}}</td>
+                                            <td>{{hospital.Hospital_Hospitalization}}</td>
+                                            <td>{{hospital.Remarks_Hospitalization}}</td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-condensed">
+                                        <tr class="form-group">
+                                            <form role="form">
+                                                <td><input ng-change="hospChanged()" type="text" class="form-control input-sm" ng-model="tempHospital.Year_Hospitalization" placeholder="Year"></td>
+                                                <td><input ng-change="hospChanged()" type="text" class="form-control input-sm" ng-model="tempHospital.Hospital_Hospitalization" placeholder="Hospital"></td>
+                                                <td><input type="text" class="form-control input-sm" ng-model="tempHospital.Remarks_Hospitalization" placeholder="Remarks"></td>
+                                            </form>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><input ng-if="isChangedHospital" type="submit" class="btn btn-primary btn-sm" ng-click="addhospital(tempHospital)" value="Add Hospital to the List"></td>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="pull-right">
+                            <input type="submit" ng-click="addpatient()" value="Save" class="btn btn-success btn-sm" data-dismiss="modal">
+                            <a href="#/patients" class="btn btn-default btn-sm" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Right Sidebar -->
+
+<aside class="control-sidebar control-sidebar-light">
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li><a href="#control-sidebar-home-tab" data-toggle="tab">Header</a></li>
+    </ul>
+    <div class="tab-content">
+        <!-- Home tab content -->
+        <div>
+            <ul class="control-sidebar-menu">
+                <li>
+                    <a href="javascript::;">
+                        <!--<i class="menu-icon fa fa-user bg-yellow"></i> -->
+                        <div class="menu-info">
+                        </div>
+                    </a>
+                </li>
+            </ul><!-- /.control-sidebar-menu -->
+        </div><!-- /.tab-pane -->
+    </div>
+</aside>
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- Page Script -->
+<script>
+    $(document).ready(function() {
+        $('body').removeClass('control-sidebar-open');
+        $("#datemask").inputmask("yyyy-mm-dd", {"placeholder": "yyyy-mm-dd"});
+
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass: 'iradio_minimal-red'
+        });
+    })
+</script>

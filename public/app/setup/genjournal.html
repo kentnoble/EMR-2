@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="span2">Doctor List<img height="60px" align="right" src="../images/hops.png"></h2>
+    <hr/>
+    <table class="table table-striped table-hover ">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Specialiize</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="genjournal in genjournals">
+            <td>{{$index +1}}</td>
+            <td>{{genjournal.name}}</td>
+            <td>{{genjournal.age}}</td>
+            <td>{{genjournal.address}}</td>
+            <td>{{genjournal.occupation}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="#/genjournal-setup" class="btn btn-success btn-sm" >+ Add Physician</a>
+</div>

@@ -1,0 +1,33 @@
+<script type="text/ng-template" id="encounterModal.html">
+    <div class="container-fluid">
+        <div class="row"><br>
+            <div class="form-group col-sm-4">
+                <input type="text" class="form-control input-sm" id="inputName" ng-model="search.Name_Doctor" placeholder="Search Doctor">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>Doctors List</h4></div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="myTable">
+                    <thead>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Address</th>
+                        <th>Contact No.</th>
+                        <th>Specialization</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="doctor in filtered = doctors.data | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" ng-click="setID(doctor)" ng-dblclick="ok(doctor)" class={{selected}}>
+                        <td>{{doctor.Name_Doctor}}</td>
+                        <td>{{doctor.Address_Doctor}}</td>
+                        <td>{{doctor.ContactNumber_Doctor}}</td>
+                        <td>{{doctor.Specialization_Doctor}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <pagination ng-model="currentPage" max-size="10" boundary-links="true" first-text="<<" last-text=">>" total-items="totalItems" items-per-page="entryLimit" class="pagination-sm"></pagination>
+    </div>
+</script>

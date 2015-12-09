@@ -1,0 +1,35 @@
+<script type="text/ng-template" id="medicineSetupModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Medicine</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="med">Medicine: </label>
+            <input type="text" class="form-control input-sm" placeholder="Medicine" ng-model="medicine.Medicine_Prescription" id="med" autofocus>
+        </div>
+        <div class="form-group">
+            <label for="str">strength: </label>
+            <input type="text" class="form-control input-sm" placeholder="Medicine" ng-model="medicine.Strength_Prescription" id="str">
+        </div>
+        <div class="form-group">
+            <label for="form">Form: </label>
+            <input type="text" class="form-control input-sm" placeholder="Medicine" ng-model="medicine.Form_Prescription" id="form">
+        </div>
+        <div class="form-group">
+            <label for="no"># of Medicine: </label>
+            <input type="text" class="form-control input-sm" placeholder="Medicine" ng-model="medicine.NoOfMedicine_Prescription" id="no">
+        </div>
+        <div class="form-group">
+            <label for="dosage">Dosage: </label>
+            <input type="text" class="form-control input-sm" placeholder="Medicine" ng-model="medicine.Dosage_Prescription" id="dosage">
+        </div>
+        <div class="form-group">
+            <label for="inst">Instruction: </label>
+            <textarea type="text" class="form-control" placeholder="Medicine" ng-model="medicine.Instruction_Prescription" id="inst"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-sm" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning btn-sm" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
